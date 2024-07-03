@@ -101,6 +101,8 @@
      protonup
      pkgs.pulseaudio
      pkgs.nix-search-cli
+     pkgs.xwaylandvideobridge
+     pkgs.xdg-desktop-portal-hyprland
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
