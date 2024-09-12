@@ -1,0 +1,71 @@
+* {
+  border: none;
+  font-family: 'Iosevka Nerd Font';
+  font-size: 16px;
+  font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+  min-height: 45px;
+}
+
+
+window#waybar {
+  background: transparent;
+}
+
+#custom-power, #workspaces {
+  border-radius: 10px;
+  background-color: #1D2321;
+  color: #A67926;
+  margin-top: 15px;
+  margin-right: 15px;
+  padding-top: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#custom-power {
+  font-size: 20px;
+  margin-left: 15px;
+  color: #1D2321;
+}
+
+#workspaces button {
+  background: #1D2321;
+  color: #A67926;
+}
+
+#clock, #backlight, #pulseaudio, #tray, #network, #battery{
+  border-radius: 10px;
+  background-color: #1D2321;
+  color: #A67926;
+  margin-top: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 15px;
+}
+
+#network {
+  border-radius: 0px;
+  margin-right: 0px;
+}
+
+#pulseaudio {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  padding-right: 5px;
+  margin-right: 0
+}
+
+#tray {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding-left: 5px;
+  margin-left: 0;
+}
+
+#clock {
+  margin-right: 0;
+}
+
+#clock > *:nth-child(1) {
+  margin-right: 20px;
+}

@@ -42,11 +42,33 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  environment.pathsToLink = [ "/libexec" ];
   # Configure keymap in X11
   services.xserver = {
     xkb.layout = "us";
     xkb.variant = "";
+    enable = true;
+    # desktopManager = {
+    #  	xterm.enable = false;
+    #     xfce = {
+    #     	enable = true;
+    #     	noDesktop = true;
+    #     	enableXfwm = false;
+    #     };
+    # };
+    # displayManager.defaultSession = "xfce+i3";
+
+    # # #displayManager.gdm.enable = true;
+    # # #desktopManager.gnome.enable = true;
+    # windowManager.i3 = {
+    #     enable = true;
+    #     extraPackages = with pkgs; [
+    #     	i3status
+    #     	i3lock
+    #     ];
+    # };
   };
+
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.churst = {
@@ -61,6 +83,8 @@
   nixpkgs.config.useGlobalPkgs = true;
 
   services.flatpak.enable = true;
+  services.teamviewer.enable = true;
+
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -78,15 +102,14 @@
      pkgs.slurp
      git
      kitty
-     pkgs.waybar
      pkgs.pw-volume
+     pkgs.waybar
      (pkgs.waybar.overrideAttrs (oldAttrs: {
          mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
        })
      )
      pkgs.mako
      libnotify
-     rofi-wayland
      firefox
      pkgs.networkmanagerapplet
      unzip
@@ -96,14 +119,18 @@
      zsh 
      wget
      hyprpaper
-     pkgs.home-manager
+     #pkgs.home-manager
      mangohud
      protonup
-     pkgs.pulseaudio
+     #pkgs.pulseaudio
      pkgs.nix-search-cli
      pkgs.xwaylandvideobridge
      pkgs.xdg-desktop-portal-hyprland
+     pkgs.cmake
+     pkgs.feh
+
   ];
+  hardware.pulseaudio.enable = false;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -112,14 +139,27 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
   programs.hyprland = {
     enable = true;
     #enableNvidiaPatches = true;
     xwayland.enable = true;
   };
 
+  #programs.sway = {
+  #  enable = true;
+  #  wrapperFeatures.gtk = true;
+  #};
+
+  programs.noisetorch.enable = true;
+
   #styling
-  #stylix.image = ../wallpapers/wallpaper.jpg;
+  stylix.enable = true;
+  stylix.image = ../wallpapers/wallpaper.jpg;
+  stylix.polarity = "dark";
+
+
+
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
       xorg.libX11
@@ -138,19 +178,29 @@
   # I can do this in launch options on steam for better performance: gamemoderun gamescope %command% & if i want frame stuff i can add mangohud to that too!
 
   environment.sessionVariables = {
-    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/user/.steam/root/compatibilitytools.d";
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/churst/.steam/root/compatibilitytools.d";
   };
 
-  programs.gamemode.enable = true;
-  programs.steam.enable = true;
-  programs.steam.gamescopeSession.enable = true;
+  programs.gamemode = {
+  	enable = true;
+  };
+  programs.steam = {
+  	enable = true;
+	gamescopeSession.enable = true;
+	package = pkgs.steam.override {
+		extraPkgs = (pkgs: with pkgs; [
+			gamemode
+		]);
+	};
+  };
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
+      #driSupport = true;
+      enable32Bit = true;
     };
     nvidia.modesetting.enable = true;
+    nvidia.open = false;
   };
   services.xserver.videoDrivers = ["nvidia"];
 
@@ -185,18 +235,10 @@
   system.stateVersion = "24.05"; # Did you read the comment?
   
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
 
 
-#  services.greetd = {
-#    enable = true;
-#    settings = rec {
-#      command = "Hyprland";
-#      user = "churst";
-#    };
-#    default_session = initial_session;
-#  };
-  sound.enable = true;
+  #sound.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
