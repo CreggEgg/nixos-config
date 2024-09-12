@@ -118,10 +118,10 @@
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
     (pkgs.writeShellScriptBin "rebuild" ''
-      git add -A
       sudo nixos-rebuild switch --flake ~/system
-      git diff | echo
+      git diff
       read -p "Commit message: " message
+      git add -A
       git commit -am "$message"
     '')
     (pkgs.writeShellScriptBin "edit-system" ''

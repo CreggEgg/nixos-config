@@ -4,6 +4,7 @@
     pkgs.rofi-wayland
   ];
 
+# test
   home.file = {
     "/home/churst/.config/rofi/config.rasi" = {
       text = ''
