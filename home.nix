@@ -18,16 +18,19 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  imports = [./waybar/waybar.nix ./rofi/rofi.nix];
+  imports = [./waybar/waybar.nix ./rofi/rofi.nix ./hypr/hyprland.nix];
 
   #dotfiles
   home.file = {
-    ".config/hypr/hyprland.conf" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/home/churst/.config/home-manager/hypr/hyprland.conf";
-    };
-    ".config/hypr/hyprpaper.conf" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/home/churst/.config/home-manager/hypr/hyprpaper.conf";
-    };
+    # ".config/hypr/hyprland.conf" = {
+    #   source = ''
+    #     
+    #   '';
+    #   #config.lib.file.mkOutOfStoreSymlink "/home/churst/.config/home-manager/hypr/hyprland.conf";
+    # };
+    # ".config/hypr/hyprpaper.conf" = {
+    #   source = config.lib.file.mkOutOfStoreSymlink "/home/churst/.config/home-manager/hypr/hyprpaper.conf";
+    # };
     # ".config/waybar/power.sh" = {
     #   source = config.lib.file.mkOutOfStoreSymlink "/home/churst/.config/home-manager/power.sh";
     # };

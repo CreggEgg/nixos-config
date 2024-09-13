@@ -9,7 +9,7 @@
     "/home/churst/.config/rofi/config.rasi" = {
       text = ''
 configuration {
-    font:				"Cascadia Code 12";
+    font:				"${config.lib.stylix.fonts.serif.name}";
     show-icons:				true;
     icon-theme:				"Arc-X-D";
     display-drun:			"Apps";
@@ -19,16 +19,12 @@ configuration {
     sidebar-mode:			false;
 }
 
-@import "~/.config/rofi/arc_dark_transparent_colors.rasi"
-
 window {
-    background-color: @background;
+    background-color: #${config.lib.stylix.colors.base00};
     border:           0;
     padding:          30;
 }
 listview {
-    lines:                          10;
-    columns:                        3;
 }
 mainbox {
     border:  0;
