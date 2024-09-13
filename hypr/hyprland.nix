@@ -3,8 +3,8 @@
   home.file = {
     ".config/hypr/hpyrpaper.conf" = {
         text = ''
-preload = ${./wallpapers/wallpaper.jpg}
-wallpaper = ,${./wallpapers/wallpaper.jpg}
+preload = ${../wallpapers/wallpaper.jpg}
+wallpaper = ,${../wallpapers/wallpaper.jpg}
 splash = false
         '';
     };

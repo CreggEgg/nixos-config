@@ -6,10 +6,10 @@
 
 # test
   home.file = {
+    /*font:				"${config.lib.stylix.fonts.serif.name}";*/
     "/home/churst/.config/rofi/config.rasi" = {
       text = ''
 configuration {
-    font:				"${config.lib.stylix.fonts.serif.name}";
     show-icons:				true;
     icon-theme:				"Arc-X-D";
     display-drun:			"Apps";
