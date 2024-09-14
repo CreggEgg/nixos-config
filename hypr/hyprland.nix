@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   home.file = {
-    ".config/hypr/hpyrpaper.conf" = {
+    ".config/hypr/hyprpaper.conf" = {
         text = ''
 preload = ${../wallpapers/wallpaper.jpg}
 wallpaper = ,${../wallpapers/wallpaper.jpg}

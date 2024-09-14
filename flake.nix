@@ -37,6 +37,20 @@
             }
           ];
         };
+        # live = nixpkgs.lib.nixosSystem {
+        #   system = "x86_64-linux";
+        #   modules = [
+        #     ./isoimage.nix
+        #     ./nixos/configuration.nix
+        #     inputs.stylix.nixosModules.stylix
+
+        #     home-manager.nixosModules.home-manager {
+        #       home-manager.backupFileExtension = "hm-backup";
+        #       home-manager.useGlobalPkgs = true;
+        #       home-manager.users.churst = import ./home.nix;
+        #     }
+        #   ];
+        # };
       };
     };
 }
