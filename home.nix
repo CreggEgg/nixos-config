@@ -116,7 +116,8 @@
      pkgs.idris
      pkgs.hyprcursor
      pkgs.idris2Packages.idris2Lsp
-     pkgs.ghc
+     # pkgs.ghc
+     pkgs.stack
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
