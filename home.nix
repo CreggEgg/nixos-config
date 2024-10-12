@@ -112,7 +112,6 @@
      pkgs.vesktop
      pkgs.zig
      pkgs.zls
-     pkgs.gimp
      pkgs.idris
      pkgs.hyprcursor
      pkgs.idris2Packages.idris2Lsp
@@ -150,7 +149,7 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
   };
-  programs.bash.initExtra = "test -r /home/churst/.opam/opam-init/init.sh && . /home/churst/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true";
+  programs.bash.initExtra = "eval $(opam env)";
   
   
 
