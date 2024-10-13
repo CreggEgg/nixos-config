@@ -196,11 +196,13 @@
   hardware = {
     graphics = {
       enable = true;
-      #driSupport = true;
+      # driSupport32 = true;
       enable32Bit = true;
     };
     nvidia.modesetting.enable = true;
     nvidia.open = false;
+    nvidia.nvidiaSettings = true;
+    nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
   services.xserver.videoDrivers = ["nvidia"];
 
