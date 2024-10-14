@@ -2,13 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs,  ... }@inputs:
 
 {
   imports =
     [ # Include the results of the hardware scan.
      ./hardware-configuration.nix
     ];
+
+
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -128,6 +130,8 @@
      pkgs.xdg-desktop-portal-hyprland
      pkgs.cmake
      pkgs.feh
+     pkgs.niri
+     # pkgs.niri-stable
 
   ];
   hardware.pulseaudio.enable = false;
@@ -139,9 +143,14 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+  #niri
+  programs.niri = {enable = true;};
+  # nixpkgs.overlays = [inputs.niri.overlays.niri];
+  # programs.niri.settings = {
+  # };
 
   programs.hyprland = {
-    enable = true;
+    enable = false;
     #enableNvidiaPatches = true;
     xwayland.enable = true;
   };
@@ -206,16 +215,16 @@
   };
   services.xserver.videoDrivers = ["nvidia"];
 
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "tuigreet --user-menu --cmd Hyprland";
-        user = "churst";
-      };
-      default_session = initial_session;
-    };
-  };
+  # services.greetd = {
+  #   enable = true;
+  #   settings = rec {
+  #     initial_session = {
+  #       command = "tuigreet --user-menu --cmd ni";
+  #       user = "churst";
+  #     };
+  #     default_session = initial_session;
+  #   };
+  # };
 
   # List services that you want to enable:
 

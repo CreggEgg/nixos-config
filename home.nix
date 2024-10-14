@@ -101,14 +101,11 @@
      pkgs.geckodriver
      pkgs.lua
      pkgs.rust-bindgen
-     pkgs.rustdesk
      pkgs.blockbench
-     pkgs.unityhub
      pkgs.dotnet-sdk_8
      pkgs.csharp-ls
      pkgs.vscode
      pkgs.jetbrains.idea-community-bin
-     pkgs.davinci-resolve
      pkgs.vesktop
      pkgs.zig
      pkgs.zls
@@ -134,6 +131,13 @@
     '')
 
   ];
+
+  programs.niri.settings.binds =  with config.lib.niri.actions; {
+    "Mod+S".action = spawn "rofi";
+    "Mod+Q".action = spawn "kitty";
+    "Mod+Ctrl+Shift+E".action = quit;
+    
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

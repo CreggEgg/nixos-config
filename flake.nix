@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     stylix.url = "github:danth/stylix";
+    niri.url = "github:sodiboo/niri-flake";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,16 +20,19 @@
         config = {
           allowUnfree = true;
         };
+        # overlays = [inputs.niri.overlays.niri];
       };
     in 
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           #specialArgs = { inherit system; }; 
+          
 
           modules = [
             ./nixos/configuration.nix
             inputs.stylix.nixosModules.stylix
+            inputs.niri.nixosModules.niri
 
             home-manager.nixosModules.home-manager {
               home-manager.backupFileExtension = "hm-backup";
