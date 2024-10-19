@@ -114,6 +114,7 @@
      pkgs.idris2Packages.idris2Lsp
      # pkgs.ghc
      pkgs.stack
+     pkgs.xwayland-satellite
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -132,8 +133,12 @@
 
   ];
   
+    
   programs.niri.settings = {
-    spawn-at-startup = [ {command=["waybar"];} {command=["dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"];} ];
+    spawn-at-startup = [ {command=["waybar"];} {command=["dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"];} {command=["xwayland-satellite"];} ];
+    environment = {
+      DISPLAY = ":0";
+    };
     binds =  with config.lib.niri.actions; {
         "Mod+S".action = spawn "fuzzel";
         "Mod+Q".action = spawn "kitty";
