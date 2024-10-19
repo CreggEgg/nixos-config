@@ -130,7 +130,6 @@
      pkgs.xdg-desktop-portal-hyprland
      pkgs.cmake
      pkgs.feh
-     pkgs.niri
      # pkgs.niri-stable
 
   ];
@@ -144,10 +143,12 @@
   #   enableSSHSupport = true;
   # };
   #niri
-  programs.niri = {enable = true;};
+  programs.niri.enable = true;
   # nixpkgs.overlays = [inputs.niri.overlays.niri];
   # programs.niri.settings = {
   # };
+
+  # programs.river.enable = true;
 
   programs.hyprland = {
     enable = false;

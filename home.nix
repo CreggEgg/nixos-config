@@ -18,7 +18,7 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  imports = [./waybar/waybar.nix ./rofi/rofi.nix ./hypr/hyprland.nix];
+  imports = [./waybar/waybar.nix ./rofi/rofi.nix ./riverwm.nix];
 
   #dotfiles
   home.file = {
@@ -131,12 +131,30 @@
     '')
 
   ];
-
-  programs.niri.settings.binds =  with config.lib.niri.actions; {
-    "Mod+S".action = spawn "rofi";
-    "Mod+Q".action = spawn "kitty";
-    "Mod+Ctrl+Shift+E".action = quit;
-    
+  
+  programs.niri.settings = {
+    spawn-at-startup = [ {command=["waybar"];} {command=["dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"];} ];
+    binds =  with config.lib.niri.actions; {
+        "Mod+S".action = spawn "fuzzel";
+        "Mod+Q".action = spawn "kitty";
+        "Mod+F".action = maximize-column;
+        "Mod+Shift+F".action = fullscreen-window;
+        "Mod+Shift+C".action = close-window;
+        "Mod+Right".action = focus-column-right;
+        "Mod+Left".action = focus-column-left;
+        "Mod+Down".action = focus-window-down;
+        "Mod+Up".action = focus-window-up;
+        "Mod+Shift+Right".action = focus-monitor-right;
+        "Mod+Shift+Left".action = focus-monitor-left;
+        "Mod+Shift+Down".action = focus-workspace-down;
+        "Mod+Shift+Up".action = focus-workspace-up;
+        "Mod+Ctrl+Shift+E".action = quit;
+        "Mod+Ctrl+Shift+H".action = show-hotkey-overlay;
+        "Mod+Ctrl+Shift+Right".action = move-column-right-or-to-monitor-right;
+        "Mod+Ctrl+Shift+Left".action = move-column-left-or-to-monitor-left;
+        "Mod+Ctrl+Shift+Down".action = move-window-down-or-to-workspace-down;
+        "Mod+Ctrl+Shift+Up".action = move-window-up-or-to-workspace-up;
+    };
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
