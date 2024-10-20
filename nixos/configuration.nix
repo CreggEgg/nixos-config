@@ -120,7 +120,8 @@
      gcc
      zsh 
      wget
-     hyprpaper
+     swaybg
+     # hyprpaper
      #pkgs.home-manager
      mangohud
      protonup
