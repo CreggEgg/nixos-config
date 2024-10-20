@@ -137,7 +137,7 @@
   
     
   programs.niri.settings = {
-    spawn-at-startup = [ {command=["waybar"];} {command=["dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"];} {command=["xwayland-satellite"];} ];
+    spawn-at-startup = [ {command=["waybar"];} {command=["dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"];} {command=["xwayland-satellite"];} {command=["swaybg" "--image" "${./wallpapers/wallpaper.jpg}"];} ];
     environment = {
       DISPLAY = ":0";
     };
