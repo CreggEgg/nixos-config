@@ -18,7 +18,7 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  imports = [./waybar/waybar.nix ./rofi/rofi.nix ./riverwm.nix];
+  imports = [./waybar/waybar.nix ./rofi/rofi.nix ./riverwm.nix ./kitty.nix];
 
   #dotfiles
   home.file = {
