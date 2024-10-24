@@ -141,6 +141,7 @@
     environment = {
       DISPLAY = ":0";
     };
+    window-rules.*.geometry-corner-radius = 25;
     prefer-no-csd = true;
     binds =  with config.lib.niri.actions; {
         "Mod+S".action = spawn "fuzzel";
