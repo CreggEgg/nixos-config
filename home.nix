@@ -141,6 +141,7 @@
     environment = {
       DISPLAY = ":0";
     };
+    prefer-no-csd = true;
     binds =  with config.lib.niri.actions; {
         "Mod+S".action = spawn "fuzzel";
         "Mod+Q".action = spawn "kitty";
