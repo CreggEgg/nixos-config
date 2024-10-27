@@ -141,7 +141,18 @@
     environment = {
       DISPLAY = ":0";
     };
-    window-rules.*.geometry-corner-radius = 25;
+    window-rules = [
+      {
+        # draw-border-with-background = true;
+        # geometry-corner-radius = let r = 25.0; in {
+        #   top-left = r;
+        #   top-right = r;
+        #   bottom-left = r;
+        #   bottom-right = r;
+        # };
+        # clip-to-geometry = true;
+      }
+    ];
     prefer-no-csd = true;
     binds =  with config.lib.niri.actions; {
         "Mod+S".action = spawn "fuzzel";
