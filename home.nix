@@ -70,7 +70,7 @@
      pkgs.lutris
      pkgs.kakoune
      pkgs.spotify
-     pkgs.google-chrome
+     # pkgs.google-chrome
      pkgs.appimage-run
      pkgs.p7zip
      pkgs.discord
@@ -144,12 +144,12 @@
     window-rules = [
       {
         # draw-border-with-background = true;
-        # geometry-corner-radius = let r = 25.0; in {
-        #   top-left = r;
-        #   top-right = r;
-        #   bottom-left = r;
-        #   bottom-right = r;
-        # };
+        geometry-corner-radius = let r = 25.0; in {
+          top-left = r;
+          top-right = r;
+          bottom-left = r;
+          bottom-right = r;
+        };
         # clip-to-geometry = true;
       }
     ];
