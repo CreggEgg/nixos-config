@@ -18,7 +18,7 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  imports = [./waybar/waybar.nix ./rofi/rofi.nix ./riverwm.nix ./kitty.nix];
+  imports = [./waybar/waybar.nix ./rofi/rofi.nix ./riverwm.nix ./kitty.nix ./mako.nix];
 
   #dotfiles
   home.file = {
@@ -143,14 +143,14 @@
     };
     window-rules = [
       {
-        # draw-border-with-background = true;
+        draw-border-with-background = true;
         geometry-corner-radius = let r = 25.0; in {
           top-left = r;
           top-right = r;
           bottom-left = r;
           bottom-right = r;
         };
-        # clip-to-geometry = true;
+        clip-to-geometry = true;
       }
     ];
     prefer-no-csd = true;
