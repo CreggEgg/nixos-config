@@ -15,7 +15,7 @@
       };
       "custom/power" = {
         "on-click" = "bash ~/.config/waybar/power.sh";
-        format = "<span color='#${config.lib.stylix.colors.base08}'>  </span>";
+        format = "<span color='#${config.lib.stylix.colors.base05}'>   </span>";
       };
       clock = {
         format = "  {:%a %b %d  %I:%M %p}";
@@ -27,13 +27,13 @@
       network = {
         interface = "wlo1";
         format = "{ifname}";
-        format-wifi = "<span color='#${config.lib.stylix.colors.base08}'>  </span>{essid}";
+        format-wifi = "<span color='#${config.lib.stylix.colors.base05}'>  </span>{essid}";
         format-ethernet = "{ipaddr}/{cidr}";
-        format-disconnected = "<span color='#${config.lib.stylix.colors.base08}'>󰖪 </span>No Network";
+        format-disconnected = "<span color='#${config.lib.stylix.colors.base05}'>󰖪 </span>No Network";
         tooltip = false;
       };
       pulseaudio = {
-        format = "<span color='#${config.lib.stylix.colors.base08}'>{icon} </span> {volume}%";
+        format = "<span color='#${config.lib.stylix.colors.base05}'>{icon} </span> {volume}%";
         format-muted = "";
         tooltip = false;
         format-icons = {
@@ -47,7 +47,7 @@
     style = ''
       * {
         border: none;
-        font-family: 'Iosevka Nerd Font';
+        font-family: '${config.stylix.fonts.serif.name}';
         font-size: 16px;
         font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
         min-height: 45px;
@@ -61,7 +61,7 @@
       #custom-power, #workspaces {
         border-radius: 10px;
         background-color: #${config.lib.stylix.colors.base00};/*#1D2321;*/
-        color: #${config.lib.stylix.colors.base08};
+        color: #${config.lib.stylix.colors.base05};
         margin-top: 15px;
         margin-right: 15px;
         padding-top: 1px;
@@ -77,13 +77,13 @@
 
       #workspaces button {
         background: #${config.lib.stylix.colors.base00};
-        color: #${config.lib.stylix.colors.base08};
+        color: #${config.lib.stylix.colors.base05};
       }
 
       #clock, #backlight, #pulseaudio, #tray, #network, #battery{
         border-radius: 10px;
         background-color: #${config.lib.stylix.colors.base00};
-        color: #${config.lib.stylix.colors.base08};
+        color: #${config.lib.stylix.colors.base05};
         margin-top: 15px;
         padding-left: 10px;
         padding-right: 10px;

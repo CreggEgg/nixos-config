@@ -18,7 +18,7 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  imports = [./waybar/waybar.nix ./rofi/rofi.nix ./riverwm.nix ./kitty.nix ./mako.nix];
+  imports = [./waybar/waybar.nix ./rofi/rofi.nix ./riverwm.nix ./kitty.nix ./mako.nix ./fuzzel.nix];
 
   #dotfiles
   home.file = {
@@ -132,12 +132,20 @@
       sudo nvim ~/system/
       sudo nixos-rebuild switch --flake ~/system
     '')
+    (pkgs.writeShellScriptBin "reload-wallpaper" ''
+      pkill waybar
+      pkill swaybg
+      niri msg action spawn -- waybar
+      niri msg action spawn -- swaybg --image ${./wallpapers/wallpaper.jpg}
+      makoctl reload
+    '')
 
   ];
+
   
     
   programs.niri.settings = {
-    spawn-at-startup = [ {command=["waybar"];} {command=["dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"];} {command=["xwayland-satellite"];} {command=["swaybg" "--image" "${./wallpapers/wallpaper.jpg}"];} ];
+    spawn-at-startup = [ {command=["waybar"];} {command=["dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"];} {command=["xwayland-satellite"];} {command=["swaybg" "--image" "${./wallpapers/wallpaper.jpg}"];} {command=["nm-applet"];} ];
     environment = {
       DISPLAY = ":0";
     };
@@ -170,10 +178,13 @@
         "Mod+Shift+Up".action = focus-workspace-up;
         "Mod+Ctrl+Shift+E".action = quit;
         "Mod+Ctrl+Shift+H".action = show-hotkey-overlay;
+        "Mod+Ctrl+Right".action = consume-or-expel-window-right;
+        "Mod+Ctrl+Left".action = consume-or-expel-window-left;
         "Mod+Ctrl+Shift+Right".action = move-column-right-or-to-monitor-right;
         "Mod+Ctrl+Shift+Left".action = move-column-left-or-to-monitor-left;
         "Mod+Ctrl+Shift+Down".action = move-window-down-or-to-workspace-down;
         "Mod+Ctrl+Shift+Up".action = move-window-up-or-to-workspace-up;
+        "Mod+Shift+S".action = screenshot;
     };
   };
 
