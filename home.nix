@@ -142,6 +142,10 @@
 
   ];
 
+  programs.fish = {
+    enable = true;
+  };
+
   
     
   programs.niri.settings = {
@@ -203,6 +207,7 @@
     # '';
   };
   programs.bash.initExtra = "eval $(opam env)";
+  
   
   
 
