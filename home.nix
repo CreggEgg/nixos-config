@@ -206,7 +206,7 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
   };
-  programs.bash.initExtra = "eval $(opam env)";
+  programs.bash.initExtra = "fish";
   
   
   
