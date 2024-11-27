@@ -10,6 +10,7 @@ background #${config.lib.stylix.colors.base00}
 font_family family="${config.stylix.fonts.serif.name}"
 foreground #${config.lib.stylix.colors.base05}
 shell fish
+confirm_os_window_close 0
         '';
     };
   };
