@@ -64,8 +64,9 @@
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
-
-     (pkgs.nerdfonts.override { fonts = [ "Iosevka" "FiraCode" ]; })
+    pkgs.nerd-fonts.iosevka
+    pkgs.nerd-fonts.fira-code
+     # (pkgs.nerdfonts.override { fonts = [ "Iosevka" "FiraCode" ]; })
      pkgs.balena-cli
      pkgs.wineWowPackages.waylandFull
      pkgs.lutris
@@ -142,6 +143,13 @@
       niri msg action spawn -- swaybg --image ${./wallpapers/wallpaper.jpg}
       makoctl reload
     '')
+    (pkgs.writeShellScriptBin "keep-alive-satellite" ''
+      while ! xwayland-satellite
+      do
+        sleep 1
+        notify-send "Restaring xwayland satellite"
+      done
+    '')
 
   ];
 
@@ -152,7 +160,7 @@
   
     
   programs.niri.settings = {
-    spawn-at-startup = [ {command=["waybar"];} {command=["dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"];} {command=["xwayland-satellite"];} {command=["swaybg" "--image" "${./wallpapers/wallpaper.jpg}"];} {command=["nm-applet"];} ];
+    spawn-at-startup = [ {command=["waybar"];} {command=["dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"];} {command=["keep-alive-satellite"];} {command=["swaybg" "--image" "${./wallpapers/wallpaper.jpg}"];} {command=["nm-applet"];} ];
     environment = {
       DISPLAY = ":0";
     };
