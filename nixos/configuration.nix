@@ -175,7 +175,7 @@
   stylix.image = ../wallpapers/wallpaper.jpg;
   stylix.polarity = "dark";
   stylix.fonts.serif.name = "Iosevka Nerd Font";
-  stylix.fonts.serif.package = pkgs.nerdfonts.override { fonts = ["Iosevka" "FiraCode"];};
+  stylix.fonts.serif.package = pkgs.nerd-fonts.iosevka;
 
 
 
