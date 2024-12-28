@@ -156,11 +156,12 @@
   programs.fish = {
     enable = true;
   };
+  programs.foot.enable = true;
 
   
     
   programs.niri.settings = {
-    spawn-at-startup = [ {command=["waybar"];} {command=["dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"];} {command=["keep-alive-satellite"];} {command=["swaybg" "--image" "${./wallpapers/wallpaper.jpg}"];} {command=["nm-applet"];} ];
+    spawn-at-startup = [ {command=["waybar"];} {command=["dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"];} {command=["keep-alive-satellite"];} {command=["swaybg" "--image" "${./wallpapers/wallpaper.jpg}"];} {command=["nm-applet"];} {command=["kitty"];}{command=["foot"];}];
     environment = {
       DISPLAY = ":0";
     };
@@ -180,6 +181,7 @@
     binds =  with config.lib.niri.actions; {
         "Mod+S".action = spawn "fuzzel";
         "Mod+Q".action = spawn "kitty";
+        "Mod+T".action = spawn "foot";
         "Mod+F".action = maximize-column;
         "Mod+Shift+F".action = fullscreen-window;
         "Mod+Shift+C".action = close-window;
